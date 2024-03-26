@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine
 import pandas as pd
+from datetime import datetime
 
 def armazenar_dataframe_sqlite_sqlalchemy(df_armazenar, tbl_nome, db_nome='meu_banco.db'):
     """
@@ -12,6 +13,8 @@ def armazenar_dataframe_sqlite_sqlalchemy(df_armazenar, tbl_nome, db_nome='meu_b
     """
 
     engine = create_engine(f'sqlite:///{db_nome}')
+
+    df_armazenar['created_at'] = pd.Timestamp.now()
     
     df_armazenar.to_sql(tbl_nome, engine, if_exists='replace', index=False)
     

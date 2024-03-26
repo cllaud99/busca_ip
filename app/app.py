@@ -1,6 +1,7 @@
 import streamlit as st
 from pipeline import pipeline
 from extract import recebe_arquivo
+from transform import busca_correspondencia
 import pandas as pd
 
 
@@ -13,7 +14,9 @@ if st.button('Atualizar dados'):
     fluxo = pipeline()
     st.write(fluxo)
 
+
 if uploaded_file is not None:
-    # Ler o arquivo Excel
+
     df = recebe_arquivo(uploaded_file)
-    st.write(df)
+    df_final = busca_correspondencia(df)
+    st.write(df_final)

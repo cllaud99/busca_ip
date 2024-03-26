@@ -12,3 +12,5 @@ def pipeline():
 
     return 'sucesso'
 
+
+pipeline()

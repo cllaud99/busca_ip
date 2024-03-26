@@ -19,5 +19,4 @@ class Usuario(Base):
     description = Column(String)
     created_at = Column(DateTime, default=datetime.now)
 
-
 Base.metadata.create_all(engine)

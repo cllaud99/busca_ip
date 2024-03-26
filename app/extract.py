@@ -12,7 +12,6 @@ def extrair_pagina_bgp(termos: list) -> pd.DataFrame:
         Return:
             tabela_resultados (pd.DataFrame): DataFrame com todas as pesquisas
     """
-
     df_final = pd.DataFrame()
 
     for termo in termos:
@@ -28,10 +27,17 @@ def extrair_pagina_bgp(termos: list) -> pd.DataFrame:
 
     return df_final
 
-def recebe_arquivo(arquivo: str):
+def recebe_arquivo(arquivo: str) -> pd.DataFrame:
+
     ip_regex = r'\b(?:\d{1,3}\.){3}\d{1,3}\b'
 
-    dfs = tabula.read_pdf(arquivo, pages='all', multiple_tables=True, pandas_options={'header': None})
+
+    if arquivo.name.endswith(".pdf"):
+        dfs = tabula.read_pdf(arquivo, pages='all', multiple_tables=True, pandas_options={'header': None})
+    elif arquivo.name.endswith(".xlsx"):
+        dfs = pd.read_excel(arquivo)
+
+
     dfs_resultante = pd.DataFrame()
 
     for df in dfs:
@@ -52,8 +58,7 @@ def recebe_arquivo(arquivo: str):
 
     return dfs_filtrado
 
-
 if __name__ == "__main__":
-    recebe_arquivo()
+    recebe_arquivo('data/data.xlsx')
 
 
