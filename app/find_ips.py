@@ -67,8 +67,6 @@ def trata_df(df):
     df['announcement'] = announcement_list
     df['description'] = description_list
 
-    df.to_excel('data/screaping_2.xlsx')
-
     return df
 
 
