@@ -1,1 +1,1 @@
-openjdk-8-jregit
+default-jre
