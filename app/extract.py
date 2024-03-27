@@ -43,7 +43,6 @@ def recebe_arquivo(arquivo: str) -> pd.DataFrame:
 
     dfs_filtrado = dfs_resultante[dfs_resultante['ips'].str.contains(ip_regex, na=False)]
 
-    dfs_filtrado.to_excel('data/data.xlsx')
 
     return dfs_filtrado
 
