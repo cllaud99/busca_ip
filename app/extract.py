@@ -1,6 +1,39 @@
 import pandas as pd
 import re
 import tabula
+import requests
+from bs4 import BeautifulSoup
+
+
+def consulta_ips(ip):
+    
+    """
+    Função que recebe um endereço IP e retorna uma tabela com infos sobre:
+    Args:
+        ip (str): endereço ip a ser consultado
+    Return:
+        tbl_extraida: tabela com as infos extraidas
+    """
+    url = 'https://bgp.he.net/ip/{ip}'
+    response = requests.get(url)
+    print(response)
+
+    if response.status_code == 200:
+
+        soup = BeautifulSoup(response.content, 'html.parser')
+        table = soup.find('table')
+        if table:
+            rows = table.find_all('tr')[1:]         
+
+            for row in rows:
+                cells = row.find_all(['td', 'th']) 
+                
+                dados_extraidos.append(linha)
+                
+            # Retornando os dados como um dicionário
+            return {'ip': ip, 'dados': dados_extraidos}
+    # Retorno em caso de falha
+    return {'ip': ip, 'dados': []}
 
 termos = ['google','facebook','netflix']
 
