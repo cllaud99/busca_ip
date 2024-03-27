@@ -19,3 +19,4 @@ bs4 = "^0.0.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+openjdk-17-jregit
