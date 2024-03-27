@@ -1,7 +1,6 @@
 import streamlit as st
-from extract import recebe_arquivo
-import pandas as pd
-from find_ips import trata_df, consulta_ips
+from app.extract import recebe_arquivo
+from app.find_ips import trata_df, consulta_ips
 
 st.title('vericador de IPs BGP')
 
