@@ -2,13 +2,13 @@
 
 ## Descrição
 
-O "Verificador de IPs BGP" é uma ferramenta desenvolvida para facilitar a análise e o processamento de arquivos contendo endereços IP, verificando detalhes de roteamento BGP para cada IP através de consultas automatizadas. Utilizando uma combinação de Python, pandas, Tabula para leitura de PDFs, e BeautifulSoup para raspagem web, este projeto permite aos usuários carregar arquivos `.pdf` ou `.xlsx` para extrair IPs, consultar informações detalhadas de roteamento BGP online e, em seguida, gerar um relatório enriquecido dessas informações. Integrado com Streamlit, o projeto também oferece uma interface amigável para os usuários visualizarem e interagirem com os dados processados.
+O "Verificador de IPs BGP" é uma ferramenta desenvolvida para facilitar a análise e o processamento de arquivos contendo endereços IP, verificando detalhes de roteamento BGP para cada IP através de consultas automatizadas. Utilizando uma combinação de Python, pandas, Tabula para leitura de PDFs, e BeautifulSoup para raspagem web, este projeto permite aos usuários carregar arquivos `.pdf` ou `.xlsx` para extrair IPs, consultar informações detalhadas de roteamento BGP online e, em seguida, gerar um relatório enriquecido dessas informações. Integrado com Streamlit, o projeto também oferece uma interface fácil para os usuários visualizarem e interagirem com os dados processados.
 
 ## Pré-requisitos
 
 Para executar este projeto, é necessário ter instalado em sua máquina:
 
-- Python 3.8 ou superior
+- Python 3.11 ou superior
 - Poetry para gerenciamento de dependências
 
 ## Instalação
