@@ -32,7 +32,7 @@ Isso criará um ambiente virtual e instalará todas as dependências listadas no
 
 Para executar o aplicativo Streamlit e começar a utilizar a ferramenta, use o seguinte comando:
 ```bash
-poetry run streamlit run app/app.py
+poetry run streamlit run app.py
 ```
 Isso iniciará o servidor do Streamlit e abrirá a interface no seu navegador padrão.
 
