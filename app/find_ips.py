@@ -4,7 +4,13 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 def consulta_ips(ip):
-    
+    """
+        Função que recebe recebe um endereço de IP e realiza a consulta no site do BGP
+        Args:
+            ip (str): Ip a ser consultado
+        Returns:
+            lista com dados
+    """
     url = f'https://bgp.he.net/ip/{ip}'
     response = requests.get(url)
     
@@ -29,6 +35,14 @@ def consulta_ips(ip):
 
 def trata_df(df):
 
+    """
+        Função que recebe um dataframe, iterra sobre ele e acrescenta as colunas origin, announcement, description
+        Args:
+            df (pd.DataFrame) dados a serem tratados
+        Returns:
+            df (pd.DataFrame) dados com colunas adicionadas
+    """
+    
     print(df)
 
     resultados = []
