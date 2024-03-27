@@ -31,24 +31,28 @@ def recebe_arquivo(arquivo: str) -> pd.DataFrame:
 
     ip_regex = r'\b(?:\d{1,3}\.){3}\d{1,3}\b'
 
+    dfs_resultante = pd.DataFrame()
+
 
     if arquivo.name.endswith(".pdf"):
         dfs = tabula.read_pdf(arquivo, pages='all', multiple_tables=True, pandas_options={'header': None})
+
+        for df in dfs:
+
+            ip_columns = [col for col in df.columns if df[col].astype(str).str.contains(ip_regex).any()]
+            result_df = df[ip_columns]
+            dfs_resultante = pd.concat([dfs_resultante, result_df], ignore_index=True)
+
+
+            print(dfs_resultante)
+
     elif arquivo.name.endswith(".xlsx"):
-        dfs = pd.read_excel(arquivo)
 
+        dfs = pd.read_excel(arquivo, header= None)
 
-    dfs_resultante = pd.DataFrame()
-
-    for df in dfs:
-
-        ip_columns = [col for col in df.columns if df[col].astype(str).str.contains(ip_regex).any()]
-        result_df = df[ip_columns]
-        dfs_resultante = pd.concat([dfs_resultante, result_df], ignore_index=True)
-
-
-        print(dfs_resultante)
-
+        ip_columns = [col for col in dfs.columns if dfs[col].astype(str).str.contains(ip_regex).any()]
+        result_df = dfs[ip_columns]
+        dfs_resultante = result_df
 
     dfs_resultante.rename(columns={dfs_resultante.columns[0]: 'ips'}, inplace=True)
 

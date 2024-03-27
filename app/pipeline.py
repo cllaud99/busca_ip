@@ -10,7 +10,7 @@ def pipeline():
 
     armazenar_dataframe_sqlite_sqlalchemy(df, 'tbl_resultado_bgp', 'pesquisa_ip.db')
 
-    return 'sucesso'
+    return 'Ips a serem consultados atualizados internamente'
 
 
 pipeline()

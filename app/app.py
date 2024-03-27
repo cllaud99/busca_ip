@@ -7,12 +7,13 @@ import pandas as pd
 
 st.title('verica IPs do gbp')
 
-
-uploaded_file = st.file_uploader("Faça o upload do arquivo Excel aqui:", type=['xlsx', 'xls', 'pdf'])
-
-if st.button('Atualizar dados'):
+st.write('Clique nesse botão para consultar na internet informações mais recentes de IPs')
+if st.button('Atualiza dados do bpg'):
     fluxo = pipeline()
     st.write(fluxo)
+
+
+uploaded_file = st.file_uploader("Faça o upload do arquivo Excel aqui:", type=['xlsx', 'xls', 'pdf'])
 
 
 if uploaded_file is not None:
