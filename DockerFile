@@ -1,20 +1,32 @@
+# Usar a imagem oficial do Python na versão 3.11.5 como base
 FROM python:3.11.5-slim
 
+# Definir o diretório de trabalho no container
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
-    software-properties-common \
-    git \
+# Instalar Poetry para gerenciamento de dependências
+RUN pip install poetry
+
+# Copiar o arquivo de dependências do Poetry para o container
+COPY pyproject.toml poetry.lock* /app/
+
+# Instalar as dependências do projeto usando Poetry
+# --no-root: instala as dependências sem instalar o pacote atual
+# --no-dev: pula a instalação de pacotes listados na seção [tool.poetry.dev-dependencies]
+RUN poetry config virtualenvs.create false \
+    && poetry install --no-interaction --no-ansi --no-dev
+
+# Instalar Java OpenJDK versão 17
+RUN apt-get update \
+    && apt-get install -y openjdk-17-jdk \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/cllaud99/busca_ip .
+# Copiar o resto dos arquivos da aplicação para o diretório de trabalho
+COPY . /app
 
-RUN pip3 install -r requirements.txt
-
+# Expor a porta em que o streamlit roda por padrão
 EXPOSE 8501
 
-HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
-
-ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Comando para executar a aplicação
+CMD ["poetry", "run", "streamlit", "run", "app.py"]
