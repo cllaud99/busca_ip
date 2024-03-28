@@ -18,8 +18,8 @@ Para configurar o ambiente e instalar as dependências necessárias, siga os pas
 1. Clone o repositório para sua máquina local:
 
 ```bash
-git clone https://github.com/seu-usuario/verificador-ip-bgp.git
-cd verificador-ip-bgp
+git clone https://github.com/cllaud99/busca_ip
+cd busca_ip
 ```
 
 2. Utilize o Poetry para instalar as dependências do projeto:
