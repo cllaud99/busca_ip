@@ -41,3 +41,7 @@ Isso iniciará o servidor do Streamlit e abrirá a interface no seu navegador pa
 2. Faça o upload do arquivo contendo os IPs que deseja verificar. O arquivo deve ser no formato .pdf ou .xlsx.
 3. A ferramenta processará o arquivo, consultará as informações de BGP para cada IP encontrado e exibirá um DataFrame com os resultados.
 4. Você pode baixar os resultados processados diretamente pela interface do Streamlit.
+
+## Aplicação
+
+A Aplicação pode ser consultada no [link](https://buscaipbgp.streamlit.app/)
