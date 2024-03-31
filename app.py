@@ -10,5 +10,5 @@ if uploaded_file is not None:
 
     df = recebe_arquivo(uploaded_file)
     df_final = trata_df(df)
-    st.write(df_final)
+    st.write(df_final) 
 
